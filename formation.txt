@@ -1,0 +1,64 @@
+
+mysql> select count(nom_CINEtu) as nombre_etudiants from etudiant;
++------------------+
+| nombre_etudiants |
++------------------+
+|                5 |
++------------------+
+1 row in set (0.02 sec)
+
+mysql> select round(datediff(sysdate(),dateNaissance)/365) as Age ,nom_CINEtu from etudiant;
++------------+------+
+| nom_CINEtu | Age  |
++------------+------+
+| A0090009   |   18 |
+| AB787878   |   19 |
+| AB888979   |   19 |
+| AB890809   |   18 |
+| AB090900   |   18 |
++------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select max(prixform) as plus_chere,min(prixform) as moins_chere from formation;
++------------+-------------+
+| plus_chere | moins_chere |
++------------+-------------+
+|       7000 |        1500 |
++------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(prixform) as prix_tout_formation from formation;
++---------------------+
+| prix_tout_formation |
++---------------------+
+|               50056 |
++---------------------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> select distinct nom_CINEtu from inscription;
++------------+
+| nom_CINEtu |
++------------+
+| A0090009   |   
+| AB787878   |   
+| AB888979   |  
+| AB890809   |   
+| AB090900   |   
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select distinct nom_CINEtu,count(nom_CINEtu) as nombre_inscription from inscription
+    -> group by nom_CINEtu;
++------------+--------------------+
+| nom_CINEtu | nombre_inscription |
++------------+--------------------+
+| A0090009   |                 1  |                      
+| AB787878   |                 8  |
+| AB888979   |                 9  |
+| AB890809   |                 7  |
+| AB090900   |                 5  |
++------------+--------------------+
+7 rows in set (0.00 sec)
